@@ -1,0 +1,15 @@
+DELIMITER $$
+CREATE TRIGGER trigger_coba
+    BEFORE UPDATE ON user
+    FOR EACH ROW 
+BEGIN
+    INSERT INTO anggota
+    set id_anggota = OLD.id,
+    harga_anggota =new.harga;
+END$$
+DELIMITER ;
+
+
+INSERT INTO `user` VALUES ('BR001','SEMINGGU JAGO PHP MYSQL',"15000");
+
+UPDATE user SET harga='FAJRIYAN' WHERE id='BR001'
