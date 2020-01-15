@@ -2,23 +2,36 @@
 	<div class="">
 		<div class="page-title">
 			<div class="page-title-actions">
+				<div class="d-inline-block dropdown">
+					<?php
+					if ($this->session->userdata('level') == '2') {
+					?>
 
+
+						
+					<?php } ?>
+				</div>
 			</div>
 			<div class="col-sm-12">
 				<div class="main-card mb-3 card">
 					<div class="card-body" style="width: 100%; border-radius: 5px; border-style: none;">
-						<h5 class="card-title">LIST PENDAFTAR</h5>
+						<h5 class="card-title">LIST PROPOSAL</h5>
 
 						<table id="table" class="table table-striped table-bordered dataTable no-footer" style="width: 100%; border-radius: 5px; border-style: none;" role="grid" aria-describedby="datatable_info">
 							<thead>
 								<tr role="row" class="odd" style="width: 100%; border-radius: 5px; border-style: none;">
 									<th>No</th>
 									<th>NIM</th>
-									<th>Nama</th>
-									<th>EMAIL</th>
-									<th>HP</th>
-									<th>JUDUL SKRIPSI</th>
-									<th width="20">DRAFT</th>
+									<th>Nama</th>																		
+									<th>STATUS JUDUL</th>
+									<th>JUDUL PROPOSAL</th>
+									<th>DRAFT PROPOSAL</th>
+
+									<?php
+									if ($this->session->userdata('level') == '2') {
+									?>
+
+									<?php } ?>
 								</tr>
 							</thead>
 							<tbody>
@@ -45,7 +58,7 @@
 
 						// Load data for the table's content from an Ajax source
 						"ajax": {
-							"url": "<?php echo site_url('index.php/Skripsi/ajax_list') ?>",
+							"url": "<?php echo site_url('index.php/List_proposal/ajax_list') ?>",
 							"type": "POST"
 						},
 
@@ -98,7 +111,8 @@
 							$('[name="email"]').val(data.email);
 							$('[name="hp"]').val(data.hp);
 							$('[name="judul"]').val(data.judul_skripsi);
-							$('[name="program_studi"]').val(data.program_studi);
+							// $('[name="status"]').val(data.status);
+							$('[name="status_drop"]').val(data.status);
 							$('#modal_form').modal('show'); // show bootstrap modal when complete loaded
 							$('.modal-title').text('Edit Mahasiswa'); // Set title to Bootstrap modal title
 
@@ -128,7 +142,9 @@
 							$('[name="nama"]').val(data.nama);
 							$('[name="email"]').val(data.email);
 							$('[name="hp"]').val(data.hp);
+							$('[name="status"]').val(data.status);
 							$('[name="judul"]').val(data.judul_skripsi);
+							$('[name="status_drop"]').val(data.status);
 							$('#modal_form').modal('show'); // show bootstrap modal when complete loaded
 							$('.modal-title').text('View Mahasiswa'); // Set title to Bootstrap modal title
 

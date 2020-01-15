@@ -279,6 +279,87 @@
       </div>
       <!-- End Bootstrap modal -->
 
+ <!-- Bootstrap modal -->
+ <div id="modal_accpembimbing" class="modal fade bs-example-modal-lg show" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="#" id="form1" class="form-horizontal form-label-left">
+                <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">NIM</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                    <input id="hnpm" name="hnpm" type="hidden">
+                    <input id="nim" name="nim" placeholder="NPM" class="form-control" type="text" value="<?php echo set_value('nim'); ?>">
+                    <span id="npm_error" class="text-danger"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">NAMA MAHASISWA</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                    <input id="nama" name="nama" placeholder="Nama Mahasiswa" class="form-control" type="text" value="<?php echo set_value('nama'); ?>">
+                    <span id="nama_error" class="text-danger"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">EMAIL MAHASISWA</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                    <input id="email" name="email" placeholder="Email Mahasiswa" class="form-control" type="text" value="<?php echo set_value('email'); ?>">
+                    <span id="nama_error" class="text-danger"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">NO HP MAHASISWA</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                    <input id="hp" name="hp" placeholder="Nomor Handphone" class="form-control" type="text" value="<?php echo set_value('hp'); ?>">
+                    <span id="nama_error" class="text-danger"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">JUDUL SKRIPSI</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                    <input id="judul" name="judul" placeholder="Judul Skripsi" class="form-control" type="text" value="<?php echo set_value('judul'); ?>">
+                    <span id="nama_error" class="text-danger"></span>
+                  </div>
+                </div>
+                <!-- <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">STATUS</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                    <input id="status" name="status" placeholder="Status Judul" class="form-control" type="text" value="<?php echo set_value('status'); ?>">
+                    <span id="nama_error" class="text-danger"></span>
+                  </div>
+                </div> -->
+                <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">Status Seminar Hasil Skripsi</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                    <!-- <?php $kode = "id='program_studi' name='program_studi' class='form-control'";
+                          echo form_dropdown('program_studi', $dd_program_studi, isset($default['dprogram_studi']) ? $default['dprogram_studi'] : '', $kode); ?> -->
+
+                    <select name="status_drop" id="status_drop" class="form-control">
+                      <option value="- MENUNGGU -">- MENUNGGU -</option>
+                      <option value="DI TERIMA">DI TERIMA</option>                      
+                      <option value="DI TOLAK">DI TOLAK</option>
+                    </select>
+
+                    <span id="program_studi_error" class="text-danger"></span>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="btnSave" onclick="save()" class="btn btn-primary" style="margin-left: 5px;margin-bottom: 0px;">Simpan</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Bootstrap modal -->
+
       <!-- Bootstrap modal -->
       <div id="modal_form3" class="modal fade bs-example-modal-lg show" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
