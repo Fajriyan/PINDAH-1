@@ -108,9 +108,9 @@
                   <li><a><i class="fa fa-calendar"></i>Jadwal Seminar</a></li>
                   <li><a><i class="fa fa-sign-in"></i>Daftar Ujian</a></li>
                   <li><a><i class="fa fa-check"></i>ACC Pembimbing</a></li>
-                  <li><a href="<?= base_url('index.php/set_penguji') ?>"><i class="fa fa-check"></i>Set Penguji</a></li>
-                  <li><a href="<?= base_url('index.php/set_penguji/jadwal_ujian') ?>"><i class="fa fa-calendar"></i>Jadwal Ujian</a></li>
-                  <li><a><i class="fa fa-book"></i>Hasil Ujian</a></li>
+                 <li><a href="<?= base_url('index.php/set_penguji') ?>"><i class="fa fa-check"></i>Set Penguji</a></li>
+                  <li><a href="<?= base_url('index.php/Y_jadwalujian') ?>"><i class="fa fa-calendar"></i>Jadwal Ujian</a></li>
+                  <li><a href="<?= base_url('index.php/input_nilaiujian') ?>"><i class="fa fa-book"></i>Input Nilai</a></li>
 
                   <!-- ELSE IF -->
 
@@ -130,9 +130,8 @@
                   <li><a><i class="fa fa-calendar"></i>Jadwal Seminar</a></li>
                   <li><a><i class="fa fa-sign-in"></i>Daftar Ujian</a></li>
                   <li><a><i class="fa fa-check"></i>ACC Pembimbing</a></li>
-                  <li><a href="<?= base_url('index.php/set_penguji') ?>"><i class="fa fa-check"></i>Set Penguji</a></li>
-                  <li><a href="<?= base_url('index.php/set_penguji/jadwal_ujian') ?>"><i class="fa fa-calendar"></i>Jadwal Ujian</a></li>
-                  <li><a><i class="fa fa-book"></i>Hasil Ujian</a></li>
+                  <li><a href="<?= base_url('index.php/Y_jadwalujian') ?>"><i class="fa fa-calendar"></i>Jadwal Ujian</a></li>
+                  <li><a href="<?= base_url('index.php/Y_hasilujian') ?>"><i class="fa fa-book"></i>Hasil Ujian</a></li>
                 <?php } ?>
             </div>
 
@@ -578,7 +577,132 @@
         </div>
       </div>
       <!-- End Bootstrap modal -->
+ <div id="modal_formsetpenguji" class="modal fade bs-example-modal-lg show" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="#" id="form2" class="form-horizontal form-label-left" >
+                <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">NIM</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                    <input id="hnpm" name="hnpm" type="hidden">
+                    <input id="nim" name="nim" placeholder="NPM" class="form-control" type="text" value="<?php echo set_value('nim'); ?>">
+                    <span id="npm_error" class="text-danger"></span>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">NAMA MAHASISWA</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                    <input id="nama" name="nama" placeholder="Nama Mahasiswa" class="form-control" type="text" value="<?php echo set_value('nama'); ?>">
+                    <span id="nama_error" class="text-danger"></span>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">JUDUL SKRIPSI</label>
+                   <div class="col-md-7 col-sm-7 col-xs-7"> 
+                    <input id="judul" name="judul" placeholder="Judul Skripsi" class="form-control" type="text" value="<?php echo set_value('judul'); ?>">
+                    <span id="nama_error" class="text-danger"></span>
+                  </div>
+                
+                <!-- <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">STATUS</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                    <input id="status" name="status" placeholder="Status Judul" class="form-control" type="text" value="<?php echo set_value('status'); ?>">
+                    <span id="nama_error" class="text-danger"></span>
+                  </div>
+                </div> -->
+                <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">Set penguji 1</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                    
+                    <select name="penguji1" id="penguji1" class="form-control">
+                      <option value="- PILIH -">- PILIH -</option>
+                      <option value="Abdul Aziz S.Kom., M.Kom">Abdul Aziz S.Kom., M.Kom</option>
+                      <option value="Alexius Endy Budianto S.Kom.,M.M">Alexius Endy Budianto S.Kom.,M.M</option>
+                      <option value="Muhammad Priyono Tri S S.T., M.Eng">Muhammad Priyono Tri S S.T., M.Eng</option>
+                      
+                    </select>
+                    <span id="program_studi_error" class="text-danger"></span>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">Set penguji 2</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                    <!-- <?php $kode = "id='program_studi' name='program_studi' class='form-control'";
+                          echo form_dropdown('program_studi', $dd_program_studi, isset($default['dprogram_studi']) ? $default['dprogram_studi'] : '', $kode); ?> -->
 
+                    <select name="penguji2" id="penguji2" class="form-control">
+                      <option value="- PILIH -">- PILIH -</option>
+                      <option value="Abdul Aziz S.Kom., M.Kom">Abdul Aziz S.Kom., M.Kom</option>
+                      <option value="Alexius Endy Budianto S.Kom.,M.M">Alexius Endy Budianto S.Kom.,M.M</option>
+                      <option value="Muhammad Priyono Tri S S.T., M.Eng">Muhammad Priyono Tri S S.T., M.Eng</option>
+                      
+                    </select>
+
+                    <span id="program_studi_error" class="text-danger"></span>
+                  </div>
+                </div>
+             
+            <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">Set penguji 3</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                    <!-- <?php $kode = "id='program_studi' name='program_studi' class='form-control'";
+                          echo form_dropdown('program_studi', $dd_program_studi, isset($default['dprogram_studi']) ? $default['dprogram_studi'] : '', $kode); ?> -->
+
+                    <select name="penguji3" id="penguji3" class="form-control">
+                      <option value="- PILIH -">- PILIH -</option>
+                     <option value="Abdul Aziz S.Kom., M.Kom">Abdul Aziz S.Kom., M.Kom</option>
+                      <option value="Alexius Endy Budianto S.Kom.,M.M">Alexius Endy Budianto S.Kom.,M.M</option>
+                      <option value="Muhammad Priyono Tri S S.T., M.Eng">Muhammad Priyono Tri S S.T., M.Eng</option>
+                    </select>
+
+                    <span id="program_studi_error" class="text-danger"></span>
+                  </div>
+                </div>
+              <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">TANGGAL</label>
+                   <div class="col-md-7 col-sm-7 col-xs-7"> 
+                    <input id="tgl_ujian" name="tgl_ujian"  class="form-control" type="date" >
+                    <span id="nama_error" class="text-danger"></span>
+                  </div>
+              <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">JAM</label>
+                   <div class="col-md-7 col-sm-7 col-xs-7"> 
+                    <input id="jam_ujian" name="jam_ujian"  class="form-control" type="time" >
+                    <span id="nama_error" class="text-danger"></span>
+              </div>
+              <div class="form-group">
+                  <label class="control-label col-md-10 col-sm-10 col-xs-10">RUANG UJIAN</label>
+                  <div class="col-md-7 col-sm-7 col-xs-7">
+                   
+                    <select name="ruang_ujian" id="ruang_ujian" class="form-control">
+                      <option value="- PILIH -">- PILIH -</option>
+                      <option value="LAB MM">LAB MM</option>
+                      <option value="LAB JARINGAN">LAB JARINGAN</option>
+                      <option value="RUANG ABDUL RAJAB">RUANG ABDUL RAJAB</option>
+                      
+                    </select>
+
+                    <span id="program_studi_error" class="text-danger"></span>
+                  </div>
+                </div>
+             
+            <div class="modal-footer">
+              <button type="submit" id="btnSave" onclick="save()" class="btn btn-primary" style="margin-left: 5px;margin-bottom: 0px;">Simpan</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
       <!-- /page content -->
 
       <!-- footer content -->
